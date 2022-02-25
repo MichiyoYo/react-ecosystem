@@ -9,7 +9,6 @@ function NewTodoForm({ todos, onCreatePressed }) {
 
   useEffect(() => {
     inputRef.current.focus();
-    const currInputRef = inputRef.current;
   }, [inputVal]);
 
   return (
