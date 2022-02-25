@@ -3,9 +3,9 @@ import "./TodoList.css";
 import TodoListItem from "./TodoListItem";
 import NewTodoForm from "./NewTodoForm";
 import { connect } from "react-redux";
-import { removeTodo } from "./actions";
+import { removeTodo, markAsCompleted } from "./actions";
 
-function TodoList({ todos, onRemovePressed }) {
+function TodoList({ todos, onRemovePressed, onMarkAsCompleted }) {
   return (
     <>
       <NewTodoForm />
@@ -15,6 +15,7 @@ function TodoList({ todos, onRemovePressed }) {
             key={todo.text}
             todo={todo}
             onRemovePressed={onRemovePressed}
+            onMarkAsCompleted={onMarkAsCompleted}
           />
         ))}
       </ul>
@@ -28,6 +29,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onRemovePressed: (text) => dispatch(removeTodo(text)),
+  onMarkAsCompleted: (text) => dispatch(markAsCompleted(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
