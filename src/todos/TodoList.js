@@ -5,7 +5,7 @@ import NewTodoForm from "./NewTodoForm";
 import { connect } from "react-redux";
 import { removeTodo, markAsCompleted } from "./actions";
 
-function TodoList({ todos, onRemovePressed, onMarkAsCompleted }) {
+function TodoList({ todos = [], onRemovePressed, onMarkAsCompleted }) {
   return (
     <>
       <NewTodoForm />

@@ -22,13 +22,10 @@ export const todos = (state = [], action) => {
 
     case MARK_AS_COMPLETED: {
       const { text } = payload;
-      const updatedState = [...state];
-      const taskIdx = updatedState.findIndex((todo) => todo.text === text);
-      if (taskIdx > -1) {
-        updatedState[taskIdx].isCompleted = true;
-        return updatedState;
-      }
-      return state;
+      return state.map((todo) => {
+        if (todo.text === text) return { ...todo, isCompleted: true };
+        return todo;
+      });
     }
 
     default:
